@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background-image: url(https://img1.hscicdn.com/image/upload/f_auto/lsci/db/PICTURES/CMS/299500/299541.6.jpg);
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container{
+            background-color:white;
+            border-radius: 5px;
+            box-shadow:10px, 20px, 25px rgb(0, 0, 0, 0.3);   
+            overflow: hidden;
+            max-width: 100%;
+            width: 400px;
+        }
+        .header{
+            background-color: gray;
+            padding: 20px 40px;
+
+        }
+        .header h2{
+              margin: 0;
+              text-align: center;
+        }
+        .form{
+            padding: 30px 40px;
+
+        }
+        .form-control{
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        .form-control label{
+            display: inline-block;
+            margin-bottom: 5px;
+
+        }
+        .form-control input{
+            border-radius: 5px;
+            display: block;
+            font-size: 14px;
+            padding: 10px;
+            width: 100%;
+
+        }
+        .form button{
+            background-color: blue;
+            border: none;
+            color: white;
+            display: block;
+            font-size: 16px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .heard h2{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heard">
+            <h2>Register form</h2>
+        </div>
+        <form class="form" id="form">
+            <div class="form-control">
+                <label>Username</label>
+                <input type="text" placeholder="Name" id="Username">
+                <i class="fas fa-user-check"></i>
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="form-control">
+                <label>Email</label>
+                <input type="email" placeholder="@gmail.com" id="email">
+                <i class="fas fa-user-check"></i>
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="form-control">
+                <label>Password</label>
+                <input type="password" placeholder="password" id="password">
+                <i class="fas fa-user-check"></i>
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="form-control">
+                <label>Conform password</label>
+                <input type="password" placeholder="Conform password" id="Username">
+                <i class="fas fa-user-check"></i>
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <button>Submit</button>
+        </form>
+
+    </div>
+    <script>
+        
+        const form=document.getElementById("form");
+        const Username=document.getElementById("username");
+        const Email=document.getElementById("Email");
+        const password=document.getElementById("password");
+        const password2=document.getElementById("password");
+
+        form.addEventListener('submit',e=>{
+            e.preventDefault();
+            checkinput();
+        });
+        function checkinput(){
+            const usernameValue = username.Value.trim();
+            const emailValue = email.Value.trim();
+            const passwordValue = password.Value.trim();
+            const password2Value = password2.Value.trim();
+
+            if(usernameValue === ''){
+                setError(username, 'username cannot Be Blank ');
+            }
+            else{
+                setSuccess(username);
+            }
+
+            if(emailValue === ''){
+                setError(email,'Email cannot Be Blank');
+            }
+            else if(!isEmail(emailValue))
+            {
+                setError(email,'Not a valid Email');
+            }
+            else{
+                setSuccess(email);
+            }
+        if(PasseordValue === ''){
+                setError(password, 'username cannot Be Blank ');
+            }
+            else{
+                setSuccess(password);
+            }
+
+
+            if(Passeord2Value === ''){
+                setError(password2, 'username cannot Be Blank ');
+            }
+            else if(password2Value !== password2Value){
+                setError(password2,'Password Does Not Match')
+            }
+            else{
+                setSuccess(password2);
+            }
+        }
+
+
+            function setError(input,message){
+                const formcontrol = input.parentElement;
+                const small = formcontrol.querySelector('small');
+                formcontrol.className = 'form-control error';
+                small.innerText = message;
+            }
+
+            function setSuccess(){
+                const formcontrol = input.parentElement;
+                formcontrol.className = 'form-control success';
+            }
+
+  
+        
+
+    </script>
+</body>
+</html>
